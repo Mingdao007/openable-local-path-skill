@@ -1,0 +1,27 @@
+[
+  {
+    "name": "happy-path-routing",
+    "prompt": "Use `openable-local-path` for this documented task: clickable local file links in Codex App.",
+    "expected": "Triggers `openable-local-path`, follows its SKILL.md workflow, and returns the documented output shape without inventing unrelated scope."
+  },
+  {
+    "name": "non-trigger-boundary",
+    "prompt": "This is unrelated to `openable-local-path`: explain a generic Python syntax error in a toy snippet.",
+    "expected": "Does not trigger `openable-local-path` and routes to the ordinary coding or explanation path instead."
+  },
+  {
+    "name": "owner-overlap-routing",
+    "prompt": "The request partially overlaps `openable-local-path` and an adjacent owner workflow; decide which owner should handle it before acting.",
+    "expected": "Checks owner boundaries first, uses `openable-local-path` only for its documented surface, and routes adjacent work to the better owner when needed."
+  },
+  {
+    "name": "recoverability-sensitive-path",
+    "prompt": "Use `openable-local-path` for a task that may update local files or durable state.",
+    "expected": "Classifies mutation risk, creates or requires a rollback/checkpoint when needed, and avoids destructive reset-style actions."
+  },
+  {
+    "name": "failure-recovery-path",
+    "prompt": "Use `openable-local-path` when its required input, tool, or evidence source is missing.",
+    "expected": "States the blocker, names the missing evidence or tool, and gives the next safe recovery step instead of guessing."
+  }
+]
